@@ -20,8 +20,10 @@ public class BankAccount {
     System.out.print("\nEnter account number: ");
     this.accountNumber = sc.nextLine();
 
-    System.out.print("\nEnter initial balance: ");
-    this.balance = Double.parseDouble(sc.nextLine());
+    Check.decimalNumber(o -> {
+      System.out.print("\nEnter initial balance: ");
+      this.balance = Double.parseDouble(sc.nextLine());
+    });
 
     System.out.print("\nEnter name: ");
     this.userName = sc.nextLine();
@@ -32,14 +34,14 @@ public class BankAccount {
     System.out.print("\nEnter phone number: ");
     this.phoneNumber = sc.nextLine();
 
-    basicInfo();
+    showInfo();
   }
 
   public String getAccountNumber() {
     return this.accountNumber;
   }
 
-  public void basicInfo() {
+  public void showInfo() {
     System.out.println("\nYour basic account information is:");
     System.out.println("Account number: " + this.accountNumber);
     System.out.println("Current balance: " + df.format(this.balance));

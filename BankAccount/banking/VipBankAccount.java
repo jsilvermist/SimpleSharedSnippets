@@ -12,13 +12,17 @@ public class VipBankAccount extends BankAccount {
   public VipBankAccount() {
     super();
 
-    System.out.print("\nEnter eligible credit amount: ");
-    this.creditAmount = Double.parseDouble(sc.nextLine());
+    Check.decimalNumber(o -> {
+      System.out.print("\nEnter eligible credit amount: ");
+      this.creditAmount = Double.parseDouble(sc.nextLine());
+    });
 
-    System.out.print("\nEnter monthly interest rate: ");
-    this.interestRate = Double.parseDouble(sc.nextLine());
+    Check.decimalNumber(o -> {
+      System.out.print("\nEnter monthly interest rate: ");
+      this.interestRate = Double.parseDouble(sc.nextLine());
+    });
 
-    vipInfo();
+    showInfo();
   }
 
   public void listChoices() {
@@ -26,7 +30,9 @@ public class VipBankAccount extends BankAccount {
     System.out.println("3. Get loan on credit");
   }
 
-  public void vipInfo() {
+  public void showInfo() {
+    super.showInfo();
+    
     System.out.println("\nYour VIP account information is:");
     System.out.println("Eligible credit amount: " + df.format(this.creditAmount));
     System.out.println("Monthly interest rate: " + df.format(this.interestRate));
